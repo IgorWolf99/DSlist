@@ -14,21 +14,26 @@ public class Game {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String title;
-	
+
 	@Column(name = "game_year")
 	private Integer year;
-	
+
 	private String genre;
 	private String platforms;
 	private Double score;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")  //Para o banco aceitar mais de 255 caracteres
 	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT")  
 	private String longDescription;
-	
-	public Game() {}
-	
+
+	public Game() {
+	}
+
 	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
 		this.id = id;
@@ -113,10 +118,5 @@ public class Game {
 	public void setLongDescription(String longDescription) {
 		this.longDescription = longDescription;
 	}
-	
-	
-	
-	
-  
-	
+
 }
