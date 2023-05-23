@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.igorwolf.dslist.dto.GameDTO;
 import com.igorwolf.dslist.dto.GameMinDTO;
+import com.igorwolf.dslist.entities.Game;
 import com.igorwolf.dslist.projection.GameMinProjection;
 import com.igorwolf.dslist.repositories.GameRepository;
 
@@ -36,5 +37,10 @@ public class GameService {
 		List<GameMinProjection> result= gameRepository.searchByList(listId);
 		return result.stream().map(x -> new GameMinDTO(x)).toList();
 		}
+	
+	@Transactional
+	public Game save(Game game){
+		return gameRepository.save(game);
+	}
 	
 }
